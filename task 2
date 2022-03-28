@@ -1,0 +1,43 @@
+#include <iostream>
+#include <set>
+#include <string>
+#include <numeric>
+
+using namespace std;
+
+set <string> SplitIntoWords(const string& text) {   /*используем старую функцию для разбивки строки на отдельные слова */
+    set<string> words;
+    string word;
+    for (const char c : text) {
+        if (c == ' ') {
+            if (!word.empty()) {
+                words.insert(word);
+                word.clear();
+            }
+        } else {
+            word += c;
+        }
+    }
+    if (!word.empty()) {
+        words.insert(word);
+    }
+
+    return words;
+}
+
+string AddDefice(string a, string b){     /*функция для свёртки, добавляющая дефис*/
+    return "-"+a+"-"+b;
+}
+
+string AddStopWords(const string& query, const set<string>& stop_words) {
+     string united; 
+     united =  query + accumulate( stop_words.begin(),stop_words.end(), AddDefice);
+    return united;    
+}
+
+int main(){
+    string stopdictionary, request;
+    readln (cin, request);
+    readln(cin, stopdictionary)
+    newline = AddStopWords(request, SplitIntoWords(stopdictionary));
+}
