@@ -31,7 +31,7 @@ string AddDefice(string a, string b){     /*функция для свёртки
 
 string AddStopWords(const string& query, const set<string>& stop_words) {
      string united; 
-     united =  query + accumulate( stop_words.begin(),stop_words.end(), AddDefice);
+     united =  query + accumulate( stop_words.begin(),stop_words.end(), AddDefice); /*некомпилируемая функция*/
     return united;    
 }
 
